@@ -4,6 +4,7 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 const mongoose = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
+require("dotenv").config();
 
 const app = express();
 const port = 3000;
@@ -20,13 +21,10 @@ app.use(cors(corsOptions));
 
 // MongoDB connection
 mongoose
-  .connect(
-    "mongodb+srv://sankalpt098:9pAsB9QL5Cumr7Mf@gapparoom.yn2sp.mongodb.net/?retryWrites=true&w=majority&appName=GappaRoom",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
