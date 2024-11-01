@@ -11,7 +11,7 @@ const port = 3000;
 
 // CORS configuration
 const corsOptions = {
-  origin: "*", // Adjust this to match your client origin
+  origin: "http://192.168.29.216:5173/", // Adjust this to match your client origin
   methods: ["GET", "POST"],
   credentials: true, // Allow credentials (like cookies or authorization headers)
 };
@@ -48,7 +48,7 @@ const Room = mongoose.model("Room", roomSchema);
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "http://192.168.29.216:5173/",
     methods: ["GET", "POST"],
     credentials: false, // Set to true only if credentials (cookies, auth headers) are required
   },
