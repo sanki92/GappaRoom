@@ -7,17 +7,9 @@ const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
 
 const app = express();
+app.use(express.json());
 const port = 3000;
 
-// CORS configuration
-const corsOptions = {
-  origin: "http://192.168.29.216:5173/", // Adjust this to match your client origin
-  methods: ["GET", "POST"],
-  credentials: true, // Allow credentials (like cookies or authorization headers)
-};
-
-// Use CORS middleware for Express routes
-app.use(cors(corsOptions));
 
 // MongoDB connection
 mongoose
@@ -46,11 +38,19 @@ const Room = mongoose.model("Room", roomSchema);
 
 // Set up HTTP server and Socket.IO
 const server = http.createServer(app);
-const io = new Server(server, {
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "PUT", "POST", "DELETE"],
+  })
+);
+
+const io = socketIO(server, {
   cors: {
-    origin: "http://192.168.29.216:5173/",
-    methods: ["GET", "POST"],
-    credentials: false, // Set to true only if credentials (cookies, auth headers) are required
+    origin: "*",
+    methods: ["GET", "PUT", "POST", "DELETE"],
+    credentials: true,
   },
 });
 
