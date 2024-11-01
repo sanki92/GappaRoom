@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:3000");
+const socket = io("https://gapparoom.onrender.com/");
 
 const RoomCreation = () => {
   const [roomName, setRoomName] = useState("");
