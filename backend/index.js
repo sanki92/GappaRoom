@@ -48,9 +48,9 @@ const Room = mongoose.model("Room", roomSchema);
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*", // Adjust this to match your client origin
+    origin: "*",
     methods: ["GET", "POST"],
-    credentials: true, // Allow credentials
+    credentials: false, // Set to true only if credentials (cookies, auth headers) are required
   },
 });
 
