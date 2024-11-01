@@ -40,7 +40,7 @@ const Room = mongoose.model("Room", roomSchema);
 const server = http.createServer(app);
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173","http://192.168.29.216:5173"],
     credentials: true,
     methods: ["GET", "PUT", "POST", "DELETE"],
   })
@@ -48,7 +48,7 @@ app.use(
 
 const io = socketIO(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173","http://192.168.29.216:5173"],
     methods: ["GET", "PUT", "POST", "DELETE"],
     credentials: true,
   },

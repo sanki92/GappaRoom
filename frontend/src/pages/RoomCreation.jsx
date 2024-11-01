@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { io } from "socket.io-client";
-
-const socket = io("https://gapparoom-production.up.railway.app");
+import socket from "../utils/socket";
 
 const RoomCreation = () => {
   const [roomName, setRoomName] = useState("");
