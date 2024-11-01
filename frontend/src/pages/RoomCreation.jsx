@@ -38,7 +38,9 @@ const RoomCreation = () => {
     //   localStorage.setItem("roomId", roomId);
     //   console.log("Joined room with ID:", roomId);
     // });
+    localStorage.setItem("roomId", roomId);
     navigate(`/gapparoom/${roomId}`);
+
   }
 
   return (
